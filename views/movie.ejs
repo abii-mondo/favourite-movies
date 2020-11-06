@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include ('./partials/head') %>
+	</head>
+	<div id="main-wrapper">
+
+		
+	<header>
+		<%- include ('./partials/header') %>
+	</header>
+
+	<body>
+
+		<div id="main" class="container card-panel row">
+		
+			<h4 style="text-align: center;"><%= eachMovie.title%></h4>
+			<div>
+
+				<h5>Starring: <%=eachMovie.star %></h5>
+				<h5>Directed by: <%= eachMovie.director%></h5>
+				<h5>Genre: <%= eachMovie.genre %></h5>
+				<h5>Released Year: <%= eachMovie.releaseYear.toDateString() %></h5>
+
+				<p> Recommended by <%= eachMovie.username %></p>		
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<%- include ('./partials/footer') %>
+
+	</footer>
+		
+	</div>
+</html>

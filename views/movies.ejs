@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include ('./partials/head') %>
+	</head>
+
+	<div id="main-wrapper">
+		<header>
+		<%- include ('./partials/header') %>
+	</header>
+
+	<body>
+
+		<div id="main" class="container card-panel row">
+		
+			<h5 style="text-align: center;" class="card-panel">Favourite Movies List</h5>
+			<div>
+
+					<% for( let i= 0; i<movies.length; i++){ %>
+					<h4>
+						<a href="/movie/<%= movies[i]._id %>"><%= movies[i].title %></a>
+						</h4>
+
+					<h7>Recommended by <%= movies[i].username %></h7>
+					<p>Date: <%= movies[i].postedAt.toDateString()%></p>
+					<hr>
+				<% } %>
+
+				<button><a href="/add-movie"> Recommend a movie</a></button> 
+						
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<%- include ('./partials/footer') %>
+
+	</footer>
+	</div>
+	
+</html>

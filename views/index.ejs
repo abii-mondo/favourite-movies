@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include ('./partials/head') %>
+	</head>
+
+	<div id="main-wrapper">
+		<header>
+		<%- include ('./partials/header') %>
+	</header>
+
+	<body>
+
+		<div class="row">
+			<h5 class="center teal-text text-lighten-4">Recommend your favourite movie to your friends</h5>
+			<div id="wrapper" class="card-panel">
+					<form action='/save' method="POST" id="form">
+
+						<label class = "green-text text-darken-2" for="username">Username</label>
+						<input type="text" placeholder="Enter username" required id="username"  name="username" />
+
+						<label class = "green-text text-darken-2" for="title">Title</label>
+						<input type="text" placeholder="Enter title" required id="title"  name="title" />
+
+						<label class = "green-text text-darken-2" for="genre">Genre</label>
+						<input type="text" placeholder="Enter genre" required id="genre" name="genre" />
+
+						<label class = "green-text text-darken-2" for="director">Director</label>
+						<input type="text" placeholder="Enter director" required  id="director" name="director" />
+
+						<label class = "green-text text-darken-2" for="star">Star</label>
+						<input type="text" placeholder="Enter star" required  id="star" name="star" />
+
+						<label class = "green-text text-darken-2" for="releaseYear">Release Year</label>
+						<input type="date" placeholder="Enter release year" required  id="releaseYear" name="releaseYear" />
+
+						<button class="btn-large" type="submit">Save</button>
+
+					</form>
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<%- include ('./partials/footer') %>
+
+	</footer>
+	</div>
+</html>
