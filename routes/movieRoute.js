@@ -16,12 +16,22 @@ router.get('/add-movie', (req, res) => {
 
 router.post('/save', async (req,res) => {
 
-	const movie = new Movie(req.body)
+	// needs validation
+	const movie = new Movie({
+		username: req.body.username,
+		title: req.body.title,
+		genre: req.body.genre,
+		director: req.body.director,
+		star: req.body.star,
+		releaseDate:  req.body.releaseDate
+	})
+
 	try {
 		const savedMovie = await movie.save()
-		res.redirect('/movies')
+		res.status(201).redirect('/movies')
 	} catch(err){
-
+		//400 error for user passing bad data
+		res.status(400).send(err.message)
 	}
 
 })
@@ -39,6 +49,8 @@ router.get('/movies', async (req, res) => {
 	}
 })
 
+
+// Getting specific movie using the middleware
 router.get('/movie/:id', async (req, res) => {
 	try {
 		const eachMovie = await Movie.findById(req.params.id)
@@ -48,5 +60,38 @@ router.get('/movie/:id', async (req, res) => {
 		res.status(500).send(err)
 	}
 })
+
+
+
+// Delete one movie
+router.delete('/delete', async (req, res) => {
+
+	try {
+		await Movies.findOneAndDelete({
+			title: req.body.title
+		})
+		res.json({message: 'Deleted!'})
+	} catch(err) {
+		res.status(500).json({message: err.message})
+	}
+})
+
+router.patch('/update/:id', async (req, res) => {
+
+	try {
+
+		const userMovie = await Movie.findByIdAndUpdate(req.params.id)
+		userMovie.username = req.body.username
+		res.json(userMovie)
+
+	} catch(err) {
+
+		send.status(500).send(err)
+	}
+})
+
+
+
+
 
 module.exports = router

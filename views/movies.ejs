@@ -14,19 +14,34 @@
 		<div id="main" class="container card-panel row">
 		
 			<h5 style="text-align: center;" class="card-panel">Favourite Movies List</h5>
+
+			<% if (typeof msg !== "undefined") { %>
+
+			<p style="color: red"><%= msg %></p>
+
+		<% } else { %>
+
+			<div> &nbsp;</div>
+	<% } %> 
+
 			<div>
 
 					<% for( let i= 0; i<movies.length; i++){ %>
 					<h4>
-						<a href="/movie/<%= movies[i]._id %>"><%= movies[i].title %></a>
+
+						<a id="title" href="/movie/<%= movies[i]._id %>"><%= movies[i].title %> </a>
+
+						<!-- Here the id is passed to the delete url endpoint -->
+						<button id="del"><i class="material-icons">delete</i></button>
+
 						</h4>
 
 					<h7>Recommended by <%= movies[i].username %></h7>
-					<p>Date: <%= movies[i].postedAt.toDateString()%></p>
+					<p>Date: <%= movies[i].postedAt.toDateString() %></p>
 					<hr>
 				<% } %>
 
-				<button><a href="/add-movie"> Recommend a movie</a></button> 
+				<button><a href="/add-movie" style="color: black;"> Recommend a movie</a></button> 
 						
 			</div>
 		</div>
@@ -36,6 +51,6 @@
 		<%- include ('./partials/footer') %>
 
 	</footer>
-	</div>
+	</div> 
 	
 </html>
